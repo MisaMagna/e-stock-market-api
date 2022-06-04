@@ -1,6 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.domain.handler;
 
-import com.cognizant.fse2.estockmarketapi.domain.data.Company;
+import com.cognizant.fse2.estockmarketapi.domain.model.Company;
 import com.cognizant.fse2.estockmarketapi.domain.port.CompanyHandlerPort;
 import com.cognizant.fse2.estockmarketapi.domain.port.CompanyPersistencePort;
 import org.springframework.stereotype.Service;

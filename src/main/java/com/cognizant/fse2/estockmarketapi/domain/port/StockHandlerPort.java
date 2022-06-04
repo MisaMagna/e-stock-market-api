@@ -1,6 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.domain.port;
 
-import com.cognizant.fse2.estockmarketapi.domain.data.Stock;
+import com.cognizant.fse2.estockmarketapi.domain.model.Stock;
 
 import java.time.LocalDate;
 import java.util.List;

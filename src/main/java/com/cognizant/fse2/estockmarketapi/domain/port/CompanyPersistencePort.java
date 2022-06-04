@@ -1,6 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.domain.port;
 
-import com.cognizant.fse2.estockmarketapi.domain.data.Company;
+import com.cognizant.fse2.estockmarketapi.domain.model.Company;
 
 import java.util.List;
 import java.util.Optional;

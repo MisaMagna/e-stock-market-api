@@ -1,4 +1,4 @@
-package com.cognizant.fse2.estockmarketapi.domain.data;
+package com.cognizant.fse2.estockmarketapi.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 public class Stock {
+    private String id;
     private BigDecimal price;
     private LocalDate date;
     private LocalTime time;

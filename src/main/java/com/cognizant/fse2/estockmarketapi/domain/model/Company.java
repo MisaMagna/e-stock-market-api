@@ -1,4 +1,4 @@
-package com.cognizant.fse2.estockmarketapi.domain.data;
+package com.cognizant.fse2.estockmarketapi.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
