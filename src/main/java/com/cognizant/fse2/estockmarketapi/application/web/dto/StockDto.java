@@ -17,7 +17,6 @@ import java.time.LocalTime;
 @Builder
 @Validated
 public class StockDto {
-    private String id;
     @NotNull
     //@Min(10000)
     private BigDecimal price;
