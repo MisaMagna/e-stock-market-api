@@ -6,7 +6,6 @@ import com.cognizant.fse2.estockmarketapi.domain.port.CompanyPersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CompanyHandler implements CompanyHandlerPort {
@@ -23,7 +22,7 @@ public class CompanyHandler implements CompanyHandlerPort {
     }
 
     @Override
-    public Optional<Company> getOne(String companyCode) {
+    public Company getOne(String companyCode) {
         return persistencePort.findByCode(companyCode);
     }
 
