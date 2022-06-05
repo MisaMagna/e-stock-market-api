@@ -8,5 +8,5 @@ import java.util.List;
 public interface StockHandlerPort {
     List<Stock> get(String companyCode, LocalDate startDate, LocalDate endDate);
 
-    Stock add(String companyCode, Stock stock);
+    void add(String companyCode, Stock stock);
 }

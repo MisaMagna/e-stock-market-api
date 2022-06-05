@@ -23,7 +23,7 @@ public class StockHandler implements StockHandlerPort {
     }
 
     @Override
-    public Stock add(String companyCode, Stock stock) {
-        return persistencePort.save(companyCode, stock);
+    public void add(String companyCode, Stock stock) {
+        persistencePort.save(companyCode, stock);
     }
 }

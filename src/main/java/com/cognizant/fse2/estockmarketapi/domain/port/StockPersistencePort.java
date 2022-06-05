@@ -8,5 +8,5 @@ import java.util.List;
 public interface StockPersistencePort {
     List<Stock> findAllByCompanyCodeAndDateRange(String companyCode, LocalDate startDate, LocalDate endDate);
 
-    Stock save(String companyCode, Stock stock);
+    void save(String companyCode, Stock stock);
 }
