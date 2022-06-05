@@ -6,10 +6,7 @@ import com.cognizant.fse2.estockmarketapi.domain.model.Company;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CompanyWebMapper {
-
-    private CompanyWebMapper() {
-    }
+public abstract class CompanyWebMapper {
 
     public static Company toDomain(CompanyDto dto) {
         return Company.builder()

@@ -6,10 +6,7 @@ import com.cognizant.fse2.estockmarketapi.infrastructure.persistance.document.St
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StockPersistenceMapper {
-
-    private StockPersistenceMapper() {
-    }
+public abstract class StockPersistenceMapper {
 
     public static Stock toDomain(StockDocument document) {
         return Stock.builder()

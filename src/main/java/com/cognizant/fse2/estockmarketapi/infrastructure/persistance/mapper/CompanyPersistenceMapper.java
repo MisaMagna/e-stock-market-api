@@ -6,10 +6,7 @@ import com.cognizant.fse2.estockmarketapi.infrastructure.persistance.document.Co
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CompanyPersistenceMapper {
-
-    private CompanyPersistenceMapper() {
-    }
+public abstract class CompanyPersistenceMapper {
 
     public static Company toDomain(CompanyDocument document) {
         return Company.builder()

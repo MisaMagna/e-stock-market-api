@@ -6,10 +6,7 @@ import com.cognizant.fse2.estockmarketapi.domain.model.Stock;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StockWebMapper {
-
-    private StockWebMapper() {
-    }
+public abstract class StockWebMapper {
 
     public static Stock toDomain(StockDto dto) {
         return Stock.builder()
