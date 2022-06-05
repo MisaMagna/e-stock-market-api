@@ -2,7 +2,7 @@ package com.cognizant.fse2.estockmarketapi.infrastructure.persistance.adapter;
 
 import com.cognizant.fse2.estockmarketapi.domain.model.Stock;
 import com.cognizant.fse2.estockmarketapi.domain.port.StockPersistencePort;
-import com.cognizant.fse2.estockmarketapi.infrastructure.persistance.mapper.StockRepository;
+import com.cognizant.fse2.estockmarketapi.infrastructure.persistance.repository.StockRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
