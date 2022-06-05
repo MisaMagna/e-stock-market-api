@@ -16,7 +16,7 @@ public abstract class CompanyPersistenceMapper {
                 .turnover(document.getTurnover())
                 .website(document.getWebsite())
                 .exchanges(document.getExchanges())
-                .stocks(StockPersistenceMapper.toDomain(document.getStocks()))
+                .stocks(document.getStocks())
                 .build();
     }
 
@@ -34,7 +34,7 @@ public abstract class CompanyPersistenceMapper {
                 .turnover(company.getTurnover())
                 .website(company.getWebsite())
                 .exchanges(company.getExchanges())
-                .stocks(StockPersistenceMapper.fromDomain(company.getStocks()))
+                .stocks(company.getStocks())
                 .build();
     }
 

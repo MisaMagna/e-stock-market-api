@@ -14,7 +14,6 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 public class Stock {
-    private String id;
     private BigDecimal price;
     private LocalDate date;
     private LocalTime time;

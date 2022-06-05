@@ -10,7 +10,6 @@ public abstract class StockWebMapper {
 
     public static Stock toDomain(StockDto dto) {
         return Stock.builder()
-                .id(dto.getId())
                 .price(dto.getPrice())
                 .date(dto.getDate())
                 .time(dto.getTime())
@@ -25,7 +24,6 @@ public abstract class StockWebMapper {
 
     public static StockDto fromDomain(Stock stock) {
         return StockDto.builder()
-                .id(stock.getId())
                 .price(stock.getPrice())
                 .date(stock.getDate())
                 .time(stock.getTime())

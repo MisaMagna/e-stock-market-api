@@ -10,7 +10,6 @@ public abstract class StockPersistenceMapper {
 
     public static Stock toDomain(StockDocument document) {
         return Stock.builder()
-                .id(document.getId())
                 .price(document.getPrice())
                 .date(document.getDate())
                 .time(document.getTime())
@@ -25,7 +24,6 @@ public abstract class StockPersistenceMapper {
 
     public static StockDocument fromDomain(Stock stock) {
         return StockDocument.builder()
-                .id(stock.getId())
                 .price(stock.getPrice())
                 .date(stock.getDate())
                 .time(stock.getTime())
