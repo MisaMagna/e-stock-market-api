@@ -4,6 +4,7 @@ import com.cognizant.fse2.estockmarketapi.application.web.dto.StockDto;
 import com.cognizant.fse2.estockmarketapi.application.web.mapper.StockWebMapper;
 import com.cognizant.fse2.estockmarketapi.domain.model.Stock;
 import com.cognizant.fse2.estockmarketapi.domain.port.StockHandlerPort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,9 @@ public class StockController {
     }
 
     @GetMapping("/get/{companyCode}/{startDate}/{endDate}")
-    public List<StockDto> getBy(@PathVariable String companyCode, LocalDate startDate, LocalDate endDate) {
+    public List<StockDto> getBy(@PathVariable String companyCode,
+                                @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
         List<Stock> stocks = handlerPort.get(companyCode, startDate, endDate);
         return StockWebMapper.fromDomain(stocks);
     }
