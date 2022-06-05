@@ -1,5 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.infrastructure.persistance.adapter;
 
+import com.cognizant.fse2.estockmarketapi.domain.exception.CompanyNotFoundException;
 import com.cognizant.fse2.estockmarketapi.domain.model.Company;
 import com.cognizant.fse2.estockmarketapi.domain.port.CompanyPersistencePort;
 import com.cognizant.fse2.estockmarketapi.infrastructure.persistance.document.CompanyDocument;
@@ -26,11 +27,13 @@ public class CompanyPersistenceAdapter implements CompanyPersistencePort {
     }
 
     @Override
-    public Optional<Company> findByCode(String companyCode) {
-        // TODO: Throw Exceptions
+    public Company findByCode(String companyCode) {
         Optional<CompanyDocument> document = repository.findById(companyCode);
-        Company company = CompanyPersistenceMapper.toDomain(document.get());
-        return Optional.of(company);
+        if (document.isEmpty()) {
+            String message = String.format("Company with id %s does not exists", companyCode);
+            throw new CompanyNotFoundException(message);
+        }
+        return CompanyPersistenceMapper.toDomain(document.get());
     }
 
     @Override
@@ -41,6 +44,11 @@ public class CompanyPersistenceAdapter implements CompanyPersistencePort {
 
     @Override
     public void deleteByCode(String companyCode) {
+        Optional<CompanyDocument> document = repository.findById(companyCode);
+        if (document.isEmpty()) {
+            String message = String.format("Company with id %s does not exists", companyCode);
+            throw new CompanyNotFoundException(message);
+        }
         repository.deleteById(companyCode);
     }
 }
