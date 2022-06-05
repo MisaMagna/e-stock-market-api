@@ -4,6 +4,7 @@ import com.cognizant.fse2.estockmarketapi.infrastructure.persistance.document.St
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+@Deprecated
 @Repository
 public interface StockRepository extends MongoRepository<StockDocument, String> {
 }

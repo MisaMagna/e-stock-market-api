@@ -16,6 +16,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 @Document("stocks")
+@Deprecated
 public class StockDocument {
     @Id
     private String id;
