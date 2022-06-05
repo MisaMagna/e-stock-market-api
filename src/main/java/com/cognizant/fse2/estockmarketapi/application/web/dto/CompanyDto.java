@@ -1,6 +1,7 @@
 package com.cognizant.fse2.estockmarketapi.application.web.dto;
 
 import com.cognizant.fse2.estockmarketapi.domain.model.StockExchange;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class CompanyDto {
     @NotBlank
     private String name;
     @NotBlank
+    @JsonProperty("CEO")
     private String CEO;
     @NotNull
     //@Min(10000000)

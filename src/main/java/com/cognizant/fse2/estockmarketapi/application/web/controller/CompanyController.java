@@ -15,32 +15,30 @@ import java.util.Optional;
 public class CompanyController {
 
     private final CompanyHandlerPort handlerPort;
-    private final CompanyWebMapper mapper;
 
-    public CompanyController(CompanyHandlerPort handlerPort, CompanyWebMapper mapper) {
+    public CompanyController(CompanyHandlerPort handlerPort) {
         this.handlerPort = handlerPort;
-        this.mapper = mapper;
     }
 
     @GetMapping("/get-all")
     public List<CompanyDto> getAll() {
         List<Company> companies = handlerPort.getAll();
-        return mapper.fromDomain(companies);
+        return CompanyWebMapper.fromDomain(companies);
     }
 
     @GetMapping("/info/{companyCode}")
     public Optional<CompanyDto> getInfo(@PathVariable String companyCode) {
         // TODO: Refactor
         Optional<Company> company = handlerPort.getOne(companyCode);
-        return Optional.of(mapper.fromDomain(company.get()));
+        return Optional.of(CompanyWebMapper.fromDomain(company.get()));
     }
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
     public CompanyDto register(@RequestBody CompanyDto companyDto) {
-        Company newCompany = mapper.toDomain(companyDto);
+        Company newCompany = CompanyWebMapper.toDomain(companyDto);
         Company company = handlerPort.create(newCompany);
-        return mapper.fromDomain(company);
+        return CompanyWebMapper.fromDomain(newCompany);
     }
 
     @DeleteMapping("/delete/{companyCode}")
