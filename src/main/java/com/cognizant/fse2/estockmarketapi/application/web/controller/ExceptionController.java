@@ -11,13 +11,17 @@ import java.util.Map;
 @RestControllerAdvice
 public class ExceptionController {
 
+    private static final String FIELD_CODE = "code";
+    private static final String FIELD_STATUS = "status";
+    private static final String FIELD_ERROR = "error";
+
     @ExceptionHandler(CompanyNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, Object> companyNotFoundExceptionHandler(CompanyNotFoundException exception) {
         return Map.of(
-                "code", HttpStatus.NOT_FOUND.value(),
-                "status", HttpStatus.NOT_FOUND.getReasonPhrase(),
-                "error", exception.getMessage()
+                FIELD_CODE, HttpStatus.NOT_FOUND.value(),
+                FIELD_STATUS, HttpStatus.NOT_FOUND.getReasonPhrase(),
+                FIELD_ERROR, exception.getMessage()
         );
     }
 
