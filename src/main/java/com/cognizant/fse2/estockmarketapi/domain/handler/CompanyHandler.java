@@ -18,11 +18,13 @@ public class CompanyHandler implements CompanyHandlerPort {
 
     @Override
     public List<Company> getAll() {
+        // TODO: RETURN STOCKS OF DAY
         return persistencePort.findAll();
     }
 
     @Override
     public Company getOne(String companyCode) {
+        // TODO: RETURN STOCKS OF DAY
         return persistencePort.findByCode(companyCode);
     }
 

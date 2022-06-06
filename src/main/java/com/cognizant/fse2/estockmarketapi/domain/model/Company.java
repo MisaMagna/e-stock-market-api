@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Company {
+    // TODO: LOOK IF NEED TO MOVE VALIDATION LOGIC TO HERE
     private String code;
     private String name;
     private String CEO;

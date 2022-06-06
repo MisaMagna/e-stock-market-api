@@ -18,10 +18,13 @@ import java.time.LocalTime;
 @Validated
 public class StockDto {
     @NotNull
+    // TODO: VALIDATION
     //@Min(10000)
     private BigDecimal price;
+    // TODO: JSON SHAPE
     @NotNull
     private LocalDate date;
+    // TODO: JSON SHAPE
     @NotNull
     private LocalTime time;
 }

@@ -25,12 +25,14 @@ public class CompanyController {
         return CompanyWebMapper.fromDomain(companies);
     }
 
+    // TODO: VALIDATION
     @GetMapping("/info/{companyCode}")
     public CompanyDto getInfo(@PathVariable String companyCode) {
         Company company = handlerPort.getOne(companyCode);
         return CompanyWebMapper.fromDomain(company);
     }
 
+    // TODO: VALIDATION
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
     public CompanyDto register(@RequestBody CompanyDto companyDto) {
@@ -39,6 +41,7 @@ public class CompanyController {
         return CompanyWebMapper.fromDomain(company);
     }
 
+    // TODO: VALIDATION
     @DeleteMapping("/delete/{companyCode}")
     public void delete(@PathVariable String companyCode) {
         handlerPort.delete(companyCode);

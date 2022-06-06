@@ -20,4 +20,6 @@ public class ExceptionController {
                 "error", exception.getMessage()
         );
     }
+
+    // TODO: ADD VALIDATION EXCEPTION OR CUSTOM ONE
 }

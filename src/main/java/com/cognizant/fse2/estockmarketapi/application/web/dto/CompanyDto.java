@@ -28,6 +28,7 @@ public class CompanyDto {
     @JsonProperty("CEO")
     private String CEO;
     @NotNull
+    // TODO: VALIDATION
     //@Min(10000000)
     private BigDecimal turnover;
     @NotBlank

@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 public class Stock {
+    // TODO: LOOK IF NEED TO MOVE VALIDATION LOGIC TO HERE
     private BigDecimal price;
     private LocalDate date;
     private LocalTime time;

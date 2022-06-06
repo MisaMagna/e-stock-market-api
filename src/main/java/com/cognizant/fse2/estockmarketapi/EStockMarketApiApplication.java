@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class EStockMarketApiApplication {
+	// TODO: ADD TEST TO APP
 	public static void main(String[] args) {
 		SpringApplication.run(EStockMarketApiApplication.class, args);
 	}
