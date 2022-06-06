@@ -1,17 +1,13 @@
 package com.cognizant.fse2.estockmarketapi.application.web.dto;
 
 import com.cognizant.fse2.estockmarketapi.domain.model.StockExchange;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -19,22 +15,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Validated
 public class CompanyDto {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String code;
-    @NotBlank
     private String name;
-    @NotBlank
     @JsonProperty("CEO")
     private String CEO;
-    @NotNull
-    // TODO: VALIDATION
-    //@Min(10000000)
     private BigDecimal turnover;
-    @NotBlank
     private String website;
-    @NotBlank
     private List<StockExchange> exchanges;
-    @Valid
     private List<StockDto> stocks;
 }
