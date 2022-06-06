@@ -1,6 +1,7 @@
 package com.cognizant.fse2.estockmarketapi.application.web.controller;
 
 import com.cognizant.fse2.estockmarketapi.application.web.dto.StockDto;
+import com.cognizant.fse2.estockmarketapi.application.web.dto.StockPriceDto;
 import com.cognizant.fse2.estockmarketapi.application.web.mapper.StockWebMapper;
 import com.cognizant.fse2.estockmarketapi.domain.model.Stock;
 import com.cognizant.fse2.estockmarketapi.domain.port.StockHandlerPort;
@@ -33,8 +34,8 @@ public class StockController {
     // TODO: VALIDATION
     @PostMapping("/add/{companyCode}")
     @ResponseStatus(HttpStatus.OK)
-    public void add(@PathVariable String companyCode, @RequestBody StockDto stockDto) {
-        Stock stock = StockWebMapper.toDomain(stockDto);
+    public void add(@PathVariable String companyCode, @RequestBody StockPriceDto price) {
+        Stock stock = StockWebMapper.toDomain(price);
         handlerPort.add(companyCode, stock);
     }
 }

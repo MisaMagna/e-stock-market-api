@@ -1,27 +1,28 @@
 package com.cognizant.fse2.estockmarketapi.application.web.mapper;
 
+import com.cognizant.fse2.estockmarketapi.application.web.dto.CompanyDetailDto;
 import com.cognizant.fse2.estockmarketapi.application.web.dto.CompanyDto;
 import com.cognizant.fse2.estockmarketapi.domain.model.Company;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class CompanyWebMapper {
 
-    public static Company toDomain(CompanyDto dto) {
+    public static Company toDomain(CompanyDetailDto detail) {
         return Company.builder()
-                .code(dto.getCode())
-                .name(dto.getName())
-                .CEO(dto.getCEO())
-                .turnover(dto.getTurnover())
-                .website(dto.getWebsite())
-                .exchanges(dto.getExchanges())
-                .stocks(StockWebMapper.toDomain(dto.getStocks()))
+                .name(detail.getName())
+                .CEO(detail.getCEO())
+                .turnover(detail.getTurnover())
+                .website(detail.getWebsite())
+                .exchanges(detail.getExchanges())
+                .stocks(Collections.emptyList())
                 .build();
     }
 
-    public static List<Company> toDomain(List<CompanyDto> dtoList) {
-        return dtoList.stream()
+    public static List<Company> toDomain(List<CompanyDetailDto> details) {
+        return details.stream()
                 .map(CompanyWebMapper::toDomain)
                 .collect(Collectors.toList());
     }

@@ -1,5 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.application.web.controller;
 
+import com.cognizant.fse2.estockmarketapi.application.web.dto.CompanyDetailDto;
 import com.cognizant.fse2.estockmarketapi.application.web.dto.CompanyDto;
 import com.cognizant.fse2.estockmarketapi.application.web.mapper.CompanyWebMapper;
 import com.cognizant.fse2.estockmarketapi.domain.model.Company;
@@ -35,8 +36,8 @@ public class CompanyController {
     // TODO: VALIDATION
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
-    public CompanyDto register(@RequestBody CompanyDto companyDto) {
-        Company newCompany = CompanyWebMapper.toDomain(companyDto);
+    public CompanyDto register(@RequestBody CompanyDetailDto detail) {
+        Company newCompany = CompanyWebMapper.toDomain(detail);
         Company company = handlerPort.create(newCompany);
         return CompanyWebMapper.fromDomain(company);
     }
