@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,16 +18,16 @@ import java.util.List;
 @Builder
 public class Company {
     private String code;
-    @NotBlank
+    @NotEmpty
     private String name;
-    @NotBlank
+    @NotEmpty
     private String CEO;
     @NotNull
     @Min(10000000)
     private BigDecimal turnover;
-    @NotBlank
+    @NotEmpty
     private String website;
-    @NotBlank
+    @NotEmpty
     private List<StockExchange> exchanges;
     @Valid
     private List<Stock> stocks;
