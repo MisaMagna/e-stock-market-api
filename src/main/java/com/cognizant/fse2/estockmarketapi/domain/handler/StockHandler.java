@@ -6,6 +6,7 @@ import com.cognizant.fse2.estockmarketapi.domain.port.StockPersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -24,6 +25,8 @@ public class StockHandler implements StockHandlerPort {
 
     @Override
     public void add(String companyCode, Stock stock) {
+        stock.setDate(LocalDate.now());
+        stock.setTime(LocalTime.now());
         persistencePort.save(companyCode, stock);
     }
 }
