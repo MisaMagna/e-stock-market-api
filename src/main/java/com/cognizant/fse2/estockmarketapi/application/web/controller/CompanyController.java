@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/market/company")
+@RequestMapping("/api/v1.0/market/company")
 public class CompanyController {
 
     private final CompanyHandlerPort handlerPort;
@@ -26,23 +26,20 @@ public class CompanyController {
         return CompanyWebMapper.fromDomain(companies);
     }
 
-    // TODO: VALIDATION
     @GetMapping("/info/{companyCode}")
     public CompanyDto getInfo(@PathVariable String companyCode) {
         Company company = handlerPort.getOne(companyCode);
         return CompanyWebMapper.fromDomain(company);
     }
 
-    // TODO: VALIDATION
     @PostMapping("/register")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public CompanyDto register(@RequestBody CompanyDetailDto detail) {
         Company newCompany = CompanyWebMapper.toDomain(detail);
         Company company = handlerPort.create(newCompany);
         return CompanyWebMapper.fromDomain(company);
     }
 
-    // TODO: VALIDATION
     @DeleteMapping("/delete/{companyCode}")
     public void delete(@PathVariable String companyCode) {
         handlerPort.delete(companyCode);

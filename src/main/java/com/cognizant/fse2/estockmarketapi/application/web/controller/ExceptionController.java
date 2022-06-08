@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+import java.util.List;
 import java.util.Map;
 
 @RestControllerAdvice
@@ -13,7 +15,7 @@ public class ExceptionController {
 
     private static final String FIELD_CODE = "code";
     private static final String FIELD_STATUS = "status";
-    private static final String FIELD_ERROR = "error";
+    private static final String FIELD_ERRORS = "errors";
 
     @ExceptionHandler(CompanyNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -21,9 +23,27 @@ public class ExceptionController {
         return Map.of(
                 FIELD_CODE, HttpStatus.NOT_FOUND.value(),
                 FIELD_STATUS, HttpStatus.NOT_FOUND.getReasonPhrase(),
-                FIELD_ERROR, exception.getMessage()
+                FIELD_ERRORS, List.of(exception.getMessage())
         );
     }
 
-    // TODO: ADD VALIDATION EXCEPTION OR CUSTOM ONE
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, Object> constraintViolationExceptionHandler(ConstraintViolationException exception) {
+        return Map.of(
+                FIELD_CODE, HttpStatus.NOT_FOUND.value(),
+                FIELD_STATUS, HttpStatus.NOT_FOUND.getReasonPhrase(),
+                FIELD_ERRORS, List.of(exception.getMessage().split(", "))
+        );
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, Object> MethodArgumentTypeMismatchException(IllegalArgumentException exception) {
+        return Map.of(
+                FIELD_CODE, HttpStatus.NOT_FOUND.value(),
+                FIELD_STATUS, HttpStatus.NOT_FOUND.getReasonPhrase(),
+                FIELD_ERRORS, List.of(exception.getMessage())
+        );
+    }
 }

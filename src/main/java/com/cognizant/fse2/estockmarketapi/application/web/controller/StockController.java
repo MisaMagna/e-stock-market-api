@@ -22,7 +22,6 @@ public class StockController {
         this.handlerPort = handlerPort;
     }
 
-    // TODO: VALIDATION
     @GetMapping("/get/{companyCode}/{startDate}/{endDate}")
     public List<StockDto> getBy(@PathVariable String companyCode,
                                 @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
@@ -31,9 +30,8 @@ public class StockController {
         return StockWebMapper.fromDomain(stocks);
     }
 
-    // TODO: VALIDATION
     @PostMapping("/add/{companyCode}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public void add(@PathVariable String companyCode, @RequestBody StockPriceDto price) {
         Stock stock = StockWebMapper.toDomain(price);
         handlerPort.add(companyCode, stock);
