@@ -1,5 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.application.web.controller;
 
+import com.cognizant.fse2.estockmarketapi.AppTest;
 import com.cognizant.fse2.estockmarketapi.application.web.WebTest;
 import com.cognizant.fse2.estockmarketapi.application.web.dto.StockPriceDto;
 import com.cognizant.fse2.estockmarketapi.domain.exception.CompanyNotFoundException;
@@ -30,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(controllers = StockController.class)
 @DisplayName("Stock Controller")
-class StockControllerTest implements WebTest {
+class StockControllerTest implements WebTest, AppTest {
 
     private static final String BASE_PATH = "/api/v1.0/market/stock";
 

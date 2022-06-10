@@ -1,5 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.domain.handler;
 
+import com.cognizant.fse2.estockmarketapi.AppTest;
 import com.cognizant.fse2.estockmarketapi.domain.DomainTest;
 import com.cognizant.fse2.estockmarketapi.domain.exception.CompanyNotFoundException;
 import com.cognizant.fse2.estockmarketapi.domain.model.Stock;
@@ -28,7 +29,7 @@ import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Stock Handler")
-class StockHandlerTest implements DomainTest {
+class StockHandlerTest implements DomainTest, AppTest {
     @InjectMocks
     private StockHandler handler;
 

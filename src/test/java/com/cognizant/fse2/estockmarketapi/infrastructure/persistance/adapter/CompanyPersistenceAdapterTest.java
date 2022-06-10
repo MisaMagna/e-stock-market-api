@@ -1,5 +1,6 @@
 package com.cognizant.fse2.estockmarketapi.infrastructure.persistance.adapter;
 
+import com.cognizant.fse2.estockmarketapi.AppTest;
 import com.cognizant.fse2.estockmarketapi.domain.exception.CompanyNotFoundException;
 import com.cognizant.fse2.estockmarketapi.domain.model.Company;
 import com.cognizant.fse2.estockmarketapi.infrastructure.persistance.PersistenceTest;
@@ -26,7 +27,7 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Company Persistence Adapter")
-class CompanyPersistenceAdapterTest implements PersistenceTest {
+class CompanyPersistenceAdapterTest implements PersistenceTest, AppTest {
 
     @InjectMocks
     private CompanyPersistenceAdapter adapter;
