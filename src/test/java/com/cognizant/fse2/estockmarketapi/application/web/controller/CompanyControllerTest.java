@@ -145,8 +145,8 @@ class CompanyControllerTest implements WebTest, AppTest {
         }
 
         @Test
-        @DisplayName("should return bad request")
-        void shouldReturnBadRequest() {
+        @DisplayName("should return bad request on constraint validation")
+        void shouldReturnBadRequestOnConstraintValidation() {
             final String message = String.format("Turnover must be greater than %d", 10000000);
             willThrow(new ConstraintViolationException(message, Collections.emptySet()))
                     .given(handlerPort).create(any(Company.class));
@@ -161,6 +161,30 @@ class CompanyControllerTest implements WebTest, AppTest {
             }
 
             then(handlerPort).should().create(any(Company.class));
+        }
+
+        @Test
+        @DisplayName("should return bad request on invalid enum")
+        void shouldReturnBadRequestOnInvalidEnum() {
+            CompanyDetailDto detail = CompanyDetailDto.builder()
+                    .name("Company 1")
+                    .CEO("CEO 1")
+                    .turnover(BigDecimal.valueOf(10000000))
+                    .website("example.com")
+                    .exchanges(List.of(StockExchange.NSE))
+                    .build();
+
+            try {
+                rest.perform(post(BASE_PATH + "/register")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(mapper.writeValueAsString(detail)
+                                        .replace("NSE", "ASD")))
+                        .andExpect(status().isBadRequest());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+            then(handlerPort).shouldHaveNoInteractions();
         }
     }
 

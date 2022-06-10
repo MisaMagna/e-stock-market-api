@@ -1,6 +1,7 @@
 package com.cognizant.fse2.estockmarketapi.application.web.controller;
 
 import com.cognizant.fse2.estockmarketapi.domain.exception.CompanyNotFoundException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -39,11 +40,21 @@ public class ExceptionController {
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, Object> methodArgumentTypeMismatchExceptionHandler(IllegalArgumentException exception) {
+    public Map<String, Object> illegalArgumentExceptionHandler(IllegalArgumentException exception) {
         return Map.of(
                 FIELD_CODE, HttpStatus.BAD_REQUEST.value(),
                 FIELD_STATUS, HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 FIELD_ERRORS, List.of(exception.getMessage())
+        );
+    }
+
+    @ExceptionHandler(InvalidFormatException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, Object> invalidFormatExceptionHandler(InvalidFormatException exception) {
+        return Map.of(
+                FIELD_CODE, HttpStatus.BAD_REQUEST.value(),
+                FIELD_STATUS, HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                FIELD_ERRORS, List.of(exception.getOriginalMessage())
         );
     }
 }
