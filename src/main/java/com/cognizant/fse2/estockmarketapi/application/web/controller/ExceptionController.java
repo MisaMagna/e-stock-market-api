@@ -31,18 +31,18 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, Object> constraintViolationExceptionHandler(ConstraintViolationException exception) {
         return Map.of(
-                FIELD_CODE, HttpStatus.NOT_FOUND.value(),
-                FIELD_STATUS, HttpStatus.NOT_FOUND.getReasonPhrase(),
+                FIELD_CODE, HttpStatus.BAD_REQUEST.value(),
+                FIELD_STATUS, HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 FIELD_ERRORS, List.of(exception.getMessage().split(", "))
         );
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, Object> MethodArgumentTypeMismatchException(IllegalArgumentException exception) {
+    public Map<String, Object> methodArgumentTypeMismatchExceptionHandler(IllegalArgumentException exception) {
         return Map.of(
-                FIELD_CODE, HttpStatus.NOT_FOUND.value(),
-                FIELD_STATUS, HttpStatus.NOT_FOUND.getReasonPhrase(),
+                FIELD_CODE, HttpStatus.BAD_REQUEST.value(),
+                FIELD_STATUS, HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 FIELD_ERRORS, List.of(exception.getMessage())
         );
     }
