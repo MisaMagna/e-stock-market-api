@@ -28,9 +28,9 @@ public class StockPersistenceAdapter implements StockPersistencePort {
             String message = String.format("Company with id %s does not exists", companyCode);
             throw new CompanyNotFoundException(message);
         }
-        // TODO: REFACTOR
         return document.get().getStocks().stream()
-                .filter(stock -> (stock.getDate().isEqual(startDate) || stock.getDate().isAfter(startDate)) && (stock.getDate().isEqual(endDate) || stock.getDate().isBefore(endDate)))
+                .filter(stock -> (stock.getDate().isEqual(startDate) || stock.getDate().isAfter(startDate))
+                        && (stock.getDate().isEqual(endDate) || stock.getDate().isBefore(endDate)))
                 .collect(Collectors.toList());
     }
 
