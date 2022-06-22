@@ -7,6 +7,7 @@ import com.cognizant.fse2.estockmarketapi.domain.port.CompanyPersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,11 @@ public class CompanyHandler implements CompanyHandlerPort {
 
     @Override
     public List<Company> getAll() {
-        List<Company> companies = persistencePort.findAll();
+        List<Company> companies = persistencePort.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Company::getName))
+                .collect(Collectors.toList());
+
         for (Company company : companies) {
             List<Stock> todayStocks = company.getStocks()
                     .stream()
