@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StockHandler implements StockHandlerPort {
@@ -20,7 +22,10 @@ public class StockHandler implements StockHandlerPort {
 
     @Override
     public List<Stock> get(String companyCode, LocalDate startDate, LocalDate endDate) {
-        return persistencePort.findAllByCompanyCodeAndDateRange(companyCode, startDate, endDate);
+        return persistencePort.findAllByCompanyCodeAndDateRange(companyCode, startDate, endDate)
+                .stream()
+                .sorted(Comparator.comparing(Stock::getDate).thenComparing(Stock::getTime).reversed())
+                .collect(Collectors.toList());
     }
 
     @Override

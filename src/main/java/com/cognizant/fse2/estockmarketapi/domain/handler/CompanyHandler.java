@@ -31,6 +31,7 @@ public class CompanyHandler implements CompanyHandlerPort {
             List<Stock> todayStocks = company.getStocks()
                     .stream()
                     .filter(stock -> stock.getDate().isEqual(LocalDate.now()))
+                    .sorted(Comparator.comparing(Stock::getTime).reversed())
                     .collect(Collectors.toList());
             company.setStocks(todayStocks);
         }
@@ -43,6 +44,7 @@ public class CompanyHandler implements CompanyHandlerPort {
         List<Stock> todayStocks = company.getStocks()
                 .stream()
                 .filter(stock -> stock.getDate().isEqual(LocalDate.now()))
+                .sorted(Comparator.comparing(Stock::getTime).reversed())
                 .collect(Collectors.toList());
         company.setStocks(todayStocks);
         return company;
