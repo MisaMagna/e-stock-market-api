@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,17 +50,21 @@ class CompanyHandlerTest implements DomainTest, AppTest {
         void shouldReturnCompaniesWithTodayStock() {
             Stock todayStock = Stock.builder()
                     .date(LocalDate.now())
+                    .time(LocalTime.now())
                     .build();
 
             Stock yesterdayStock = Stock.builder()
                     .date(LocalDate.now().minusDays(1))
+                    .time(LocalTime.now().minusHours(1))
                     .build();
 
             Company company = Company.builder()
+                    .name("Test Company")
                     .stocks(List.of(todayStock, yesterdayStock))
                     .build();
 
             Company todayCompany = Company.builder()
+                    .name("Test Company")
                     .stocks(List.of(todayStock))
                     .build();
 
