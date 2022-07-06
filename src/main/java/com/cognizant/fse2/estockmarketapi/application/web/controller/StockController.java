@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Log4j2
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1.0/market/stock")
 public class StockController {
